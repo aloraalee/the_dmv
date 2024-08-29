@@ -1,0 +1,6 @@
+class Registrant
+
+
+
+
+end
