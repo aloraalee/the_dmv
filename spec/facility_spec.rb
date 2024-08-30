@@ -62,10 +62,21 @@ RSpec.describe Facility do
   end
 
   describe '#update registration' do
-    xit 'can update registration date' do
+    it 'can update registration date' do
       @facility_1.register_vehicle(@cruz)
-      expect(@cruz.registration_date). to eq()
-      #I'm not sure what it should be equal to based on the interaction pattern 
+      expect(@cruz.registration_date).to eq(Date.today)
     end
+
+    it 'can update plate type' do 
+      @facility_1.register_vehicle(@camaro)
+      expect(@camaro.registration_date).to eq(Date.today)
+      expect(@camaro.plate_type). to eq(:antique)
+
+      @facility_1.register_vehicle(@bolt)
+      expect(@bolt.registration_date).to eq(Date.today)
+      expect(@bolt.plate_type). to eq(:ev)
+    end
+
+
   end
 end
