@@ -8,6 +8,9 @@ RSpec.describe Facility do
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
     @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev} )
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
+    @registrant_1 = Registrant.new('Bruce', 18, true)
+    @registrant_2 = Registrant.new('Penny', 16)
+    @registrant_3 = Registrant.new('Tucker', 15)
   end
   describe '#initialize' do
     it 'can initialize' do
@@ -76,7 +79,29 @@ RSpec.describe Facility do
       expect(@bolt.registration_date).to eq(Date.today)
       expect(@bolt.plate_type). to eq(:ev)
     end
+  end
 
+  describe '#Update services' do
+    it 'can administer written tests to registrants with permits' do
 
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(false)
+
+      @facility_1.add_service('Written Test')
+      expect(@facility_1.services).to eq(['Written Test'])
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(true)
+
+      expect(@facility_1.administer_written_test(@registrant_2)).to eq(false)
+      @registrant_2.earn_permit
+      expect(@facility_1.administer_written_test(@registrant_2)).to eq(true)
+    end
+  end
+
+  describe '#Update license data' do
+    it 'can update written' do
+
+      @facility_1.add_service('Written Test')
+      @facility_1.administer_written_test(@registrant_1)
+      expect(@registrant_1.license_data). to eq({:written=>true, :license=>false, :renewed=>false})
+    end
   end
 end
