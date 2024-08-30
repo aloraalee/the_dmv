@@ -22,6 +22,15 @@ class Facility
     end
       vehicle.registration_date = Date.today
   end
+
+  def administer_written_test(registrant)
+    if @services == ['Written Test'] && registrant.permit? == true && registrant.age >= 16
+      registrant.license_data[:written] = true
+      true
+    else
+      false
+    end
+  end
 end
 
 
