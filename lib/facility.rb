@@ -1,6 +1,6 @@
 class Facility
   attr_reader :name, :address, :phone, :services, :registered_vehicles,
-              :collected_fees
+              :collected_fees, :date
 
   def initialize(contact_info)
     @name = contact_info[:name]
@@ -20,6 +20,7 @@ class Facility
       @registered_vehicles << vehicle
       @collected_fees += 100
     end
+      vehicle.registration_date = Date.today
   end
 end
 
