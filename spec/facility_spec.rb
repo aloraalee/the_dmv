@@ -73,11 +73,11 @@ RSpec.describe Facility do
     it 'can update plate type' do 
       @facility_1.register_vehicle(@camaro)
       expect(@camaro.registration_date).to eq(Date.today)
-      expect(@camaro.plate_type). to eq(:antique)
+      expect(@camaro.calculate_plate_type). to eq(:antique)
 
       @facility_1.register_vehicle(@bolt)
       expect(@bolt.registration_date).to eq(Date.today)
-      expect(@bolt.plate_type). to eq(:ev)
+      expect(@bolt.calculate_plate_type). to eq(:ev)
     end
   end
 
