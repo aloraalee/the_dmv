@@ -16,7 +16,7 @@ class Facility
   end
 
   def register_vehicle(vehicle)
-    if @services == ['Vehicle Registration']
+    if @services.include? ('Vehicle Registration')
       @registered_vehicles << vehicle
       @collected_fees += 100
     end
@@ -24,8 +24,26 @@ class Facility
   end
 
   def administer_written_test(registrant)
-    if @services == ['Written Test'] && registrant.permit? == true && registrant.age >= 16
+    if @services.include?('Written Test') && registrant.permit? == true && registrant.age >= 16
       registrant.license_data[:written] = true
+      true
+    else
+      false
+    end
+  end
+
+  def administer_road_test(registrant)
+    if @services.include?('Road Test') && registrant.license_data[:written]==true
+      registrant.license_data[:license] = true
+      true
+    else
+      false
+    end
+  end
+
+  def renew_drivers_license(registrant)
+    if @services.include?('Renew License') && registrant.license_data[:license]==true
+      registrant.license_data[:renewed] = true
       true
     else
       false
