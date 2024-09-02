@@ -3,7 +3,7 @@ class FacilityFactory
     def initialize
     end    
 
-    def create_facilities(office_locations)
+    def create_co_facilities(office_locations)
         office_locations.map do |office_location|
             Facility.new(
                 name: office_location[:dmv_office],
@@ -13,5 +13,16 @@ class FacilityFactory
             )
         end
     end 
+   
+    def create_ny_facilities(office_locations)
+        office_locations.map do |office_location|
+            Facility.new(
+                name: office_location[:office_name],
+                address: office_location[:street_address_line_1],
+                phone: office_location[:public_phone_number],
+            )
+        end
+    end 
+
 
 end
