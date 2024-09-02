@@ -24,5 +24,14 @@ class FacilityFactory
         end
     end 
 
+    def create_mo_facilities(office_locations)
+        office_locations.map do |office_location|
+            Facility.new(
+                name: office_location[:name],
+                address: office_location[:address1],
+                phone: office_location[:phone],
+            )
+        end
+    end 
 
 end
