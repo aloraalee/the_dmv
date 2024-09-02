@@ -10,7 +10,6 @@ RSpec.describe Facility do
         @ny_facilities = @facility_generator.create_ny_facilities(@ny_dmv_office_locations)
         @mo_facilities = @facility_generator.create_mo_facilities(@mo_dmv_office_locations)
     end
-    require 'pry';binding.pry
     describe '#initialize facility factory' do
         it 'creates a Facility Factory object' do
 
@@ -63,7 +62,7 @@ RSpec.describe Facility do
             expect(@mo_facilities).not_to be_empty
             expect(@mo_facilities.first).to be_a(Facility)
 
-            @mo_first_facility = @ny_facilities.first
+            @mo_first_facility = @mo_facilities.first
             expect(@mo_first_facility.name).to eq("OAKVILLE")
             expect(@mo_first_facility.address).to eq("3164 TELEGRAPH ROAD")
             # The address info needs to be updated to contain the suits, city, state and zip 
