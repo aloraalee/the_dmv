@@ -6,6 +6,7 @@ require './lib/dmv_data_service'
 require './lib/registrant'
 require 'date'
 require './lib/vehicle_factory'
+require './lib/facility_factory'
 
 RSpec.configure do |config|
     config.formatter = :documentation
