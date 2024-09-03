@@ -9,6 +9,7 @@ RSpec.describe Facility do
         @co_facilities = @facility_generator.create_co_facilities(@co_dmv_office_locations)
         @ny_facilities = @facility_generator.create_ny_facilities(@ny_dmv_office_locations)
         @mo_facilities = @facility_generator.create_mo_facilities(@mo_dmv_office_locations)
+       # require 'pry';binding.pry
     end
     describe '#initialize facility factory' do
         it 'creates a Facility Factory object' do
@@ -26,9 +27,7 @@ RSpec.describe Facility do
   
             @co_first_facility = @co_facilities.first
             expect(@co_first_facility.name).to eq("DMV Tremont Branch")
-            expect(@co_first_facility.address).to eq("2855 Tremont Place")
-            # The address info needs to be updated to contain the suits, city, state and zip 
-            #from API data (if possible) to match the address info from the Facility class.
+            expect(@co_first_facility.address).to eq("2855 Tremont Place, Suite 118, Denver, CO, 80205")
             expect(@co_first_facility.phone).to eq("(720) 865-4600")
             expect(@co_first_facility.services).to eq("vehicle titles, registration, renewals;  VIN inspections")
             expect(@co_first_facility.registered_vehicles).to eq([])
@@ -45,9 +44,7 @@ RSpec.describe Facility do
   
             @ny_first_facility = @ny_facilities.first
             expect(@ny_first_facility.name).to eq("HUNTINGTON")
-            expect(@ny_first_facility.address).to eq("1815 E JERICHO TURNPIKE")
-            # The address info needs to be updated to contain the suits, city, state and zip 
-            #from API data (if possible) to match the address info from the Facility class.
+            expect(@ny_first_facility.address).to eq("1815 E JERICHO TURNPIKE, HUNTINGTON, NY, 11743")
             expect(@ny_first_facility.phone).to eq("7184774820")
             expect(@ny_first_facility.services).to eq([])
             expect(@ny_first_facility.registered_vehicles).to eq([])
@@ -64,9 +61,7 @@ RSpec.describe Facility do
 
             @mo_first_facility = @mo_facilities.first
             expect(@mo_first_facility.name).to eq("OAKVILLE")
-            expect(@mo_first_facility.address).to eq("3164 TELEGRAPH ROAD")
-            # The address info needs to be updated to contain the suits, city, state and zip 
-            #from API data (if possible) to match the address info from the Facility class.
+            expect(@mo_first_facility.address).to eq("3164 TELEGRAPH ROAD, ST LOUIS, MO, 63125")
             expect(@mo_first_facility.phone).to eq("(314) 887-1050")
             expect(@mo_first_facility.services).to eq([])
             expect(@mo_first_facility.registered_vehicles).to eq([])
