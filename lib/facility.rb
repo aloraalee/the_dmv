@@ -50,6 +50,3 @@ class Facility
     end
   end
 end
-
-
-        # require 'pry';binding.pry
